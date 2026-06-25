@@ -1,0 +1,35 @@
+name: CD — Build Electron Installer
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Vite
+        run: npm run build
+        env:
+          VITE_API_URL: http://localhost:8000/api/v1
+
+      - name: Package Electron .exe
+        run: npm run dist:win
+
+      - name: Upload installer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: HumaNai-Windows-Installer
+          path: release/*.exe
+          retention-days: 30
