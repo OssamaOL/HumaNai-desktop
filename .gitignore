@@ -6,3 +6,4 @@ dist/
 *.msi
 *.zip
 *.7z
+Backend/humanai_backend/service-account.json

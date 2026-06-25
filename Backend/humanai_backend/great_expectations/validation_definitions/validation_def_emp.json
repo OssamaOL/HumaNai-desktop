@@ -1,0 +1,22 @@
+{
+  "data": {
+    "asset": {
+      "id": "a499e517-51e0-4325-95d7-39607325ea4d",
+      "name": "employees_asset"
+    },
+    "batch_definition": {
+      "id": "9442988a-04de-4f18-ac93-22db8e2028d1",
+      "name": "employees_batch_def"
+    },
+    "datasource": {
+      "id": "1172eced-0b07-451d-a32d-2ac4211ebec5",
+      "name": "huma_pandas_datasource"
+    }
+  },
+  "id": "a00bcb36-4cc0-4290-92b9-91c12712911b",
+  "name": "validation_def_emp",
+  "suite": {
+    "id": "d86cccdc-1bc2-4974-9b40-f041f195b72a",
+    "name": "employees_suite"
+  }
+}

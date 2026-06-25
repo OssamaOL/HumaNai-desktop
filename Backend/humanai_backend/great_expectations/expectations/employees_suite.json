@@ -1,0 +1,52 @@
+{
+  "expectations": [
+    {
+      "id": "4edab1e2-8842-4fac-a567-5fa110279cf6",
+      "kwargs": {
+        "column": "id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "9c0457ab-c10a-437d-9e1c-10cc778107f6",
+      "kwargs": {
+        "column": "full_name"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "cb920ca6-b882-4513-933b-29ab60f03a2b",
+      "kwargs": {
+        "column": "matricule"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "745368f8-023e-4531-abea-84c52c8688e1",
+      "kwargs": {
+        "column": "contract_type",
+        "value_set": [
+          "cdi",
+          "cdd",
+          "stage",
+          "freelance"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    }
+  ],
+  "id": "d86cccdc-1bc2-4974-9b40-f041f195b72a",
+  "meta": {
+    "great_expectations_version": "1.18.1"
+  },
+  "name": "employees_suite",
+  "notes": null
+}

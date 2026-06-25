@@ -1,0 +1,11 @@
+apiVersion: 1
+
+providers:
+  - name: 'HumanAI FastAPI Dashboards'
+    orgId: 1
+    folder: 'HumaNai Platform'
+    type: file
+    disableDeletion: false
+    editable: true
+    options:
+      path: /etc/grafana/provisioning/dashboards/files

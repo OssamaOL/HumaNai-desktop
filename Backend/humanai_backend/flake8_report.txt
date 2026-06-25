@@ -1,0 +1,138 @@
+.\app\models\absence.py:1:1: F401 'sqlalchemy.String' imported but unused
+.\app\models\audit.py:2:1: F401 'sqlalchemy.dialects.postgresql.INET' imported but unused
+.\app\models\document.py:2:1: F401 'sqlalchemy.dialects.postgresql.JSONB' imported but unused
+.\app\models\employee.py:1:1: F401 'sqlalchemy.Numeric' imported but unused
+.\app\models\employee.py:2:1: F401 'sqlalchemy.dialects.postgresql.JSONB' imported but unused
+.\app\models\employee.py:4:1: F401 'sqlalchemy.Boolean' imported but unused
+.\app\routers\absences.py:3:1: F401 'sqlalchemy.update' imported but unused
+.\app\routers\absences.py:9:1: F401 'app.redis_client.queue_push' imported but unused
+.\app\routers\admin.py:3:1: F401 'sqlalchemy.select' imported but unused
+.\app\routers\admin.py:3:1: F401 'sqlalchemy.func' imported but unused
+.\app\routers\admin.py:9:1: F401 'typing.List' imported but unused
+.\app\routers\admin.py:52:128: E501 line too long (128 > 127 characters)
+.\app\routers\admin.py:56:128: E501 line too long (144 > 127 characters)
+.\app\routers\admin.py:57:128: E501 line too long (131 > 127 characters)
+.\app\routers\admin.py:61:128: E501 line too long (158 > 127 characters)
+.\app\routers\admin.py:66:128: E501 line too long (131 > 127 characters)
+.\app\routers\admin.py:76:128: E501 line too long (132 > 127 characters)
+.\app\routers\alerts.py:5:1: F401 'app.middleware.firebase_auth.get_current_user' imported but unused
+.\app\routers\alerts.py:21:128: E501 line too long (136 > 127 characters)
+.\app\routers\alerts.py:22:128: E501 line too long (174 > 127 characters)
+.\app\routers\alerts.py:34:128: E501 line too long (263 > 127 characters)
+.\app\routers\alerts.py:48:128: E501 line too long (150 > 127 characters)
+.\app\routers\alerts.py:57:128: E501 line too long (154 > 127 characters)
+.\app\routers\alerts.py:59:83: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+.\app\routers\alerts.py:65:128: E501 line too long (141 > 127 characters)
+.\app\routers\alerts.py:74:128: E501 line too long (141 > 127 characters)
+.\app\routers\alerts.py:84:128: E501 line too long (154 > 127 characters)
+.\app\routers\alerts.py:98:128: E501 line too long (222 > 127 characters)
+.\app\routers\alerts.py:109:128: E501 line too long (133 > 127 characters)
+.\app\routers\alerts.py:118:128: E501 line too long (151 > 127 characters)
+.\app\routers\alerts.py:127:128: E501 line too long (132 > 127 characters)
+.\app\routers\alerts.py:136:128: E501 line too long (140 > 127 characters)
+.\app\routers\alerts.py:159:128: E501 line too long (151 > 127 characters)
+.\app\routers\alerts.py:161:128: E501 line too long (128 > 127 characters)
+.\app\routers\alerts.py:162:128: E501 line too long (133 > 127 characters)
+.\app\routers\assistant.py:3:1: F401 'sqlalchemy.func' imported but unused
+.\app\routers\assistant.py:7:1: F401 'app.models.rag.RagDocumentAccess' imported but unused
+.\app\routers\assistant.py:11:1: F401 'typing.List' imported but unused
+.\app\routers\assistant.py:14:1: F401 'json' imported but unused
+.\app\routers\assistant.py:32:128: E501 line too long (153 > 127 characters)
+.\app\routers\assistant.py:33:128: E501 line too long (143 > 127 characters)
+.\app\routers\assistant.py:87:13: F401 'pgvector.sqlalchemy.Vector' imported but unused
+.\app\routers\assistant.py:144:128: E501 line too long (153 > 127 characters)
+.\app\routers\assistant.py:175:128: E501 line too long (135 > 127 characters)
+.\app\routers\assistant.py:189:128: E501 line too long (181 > 127 characters)
+.\app\routers\assistant.py:216:128: E501 line too long (132 > 127 characters)
+.\app\routers\assistant.py:226:128: E501 line too long (135 > 127 characters)
+.\app\routers\audit.py:6:1: F401 'app.middleware.firebase_auth.get_current_user' imported but unused
+.\app\routers\audit.py:27:17: E741 ambiguous variable name 'l'
+.\app\routers\audit.py:40:128: E501 line too long (248 > 127 characters)
+.\app\routers\audit.py:50:41: E741 ambiguous variable name 'l'
+.\app\routers\audit.py:60:9: E741 ambiguous variable name 'l'
+.\app\routers\audit.py:63:128: E501 line too long (141 > 127 characters)
+.\app\routers\audit.py:69:5: E741 ambiguous variable name 'l'
+.\app\routers\audit.py:76:128: E501 line too long (199 > 127 characters)
+.\app\routers\audit.py:85:128: E501 line too long (135 > 127 characters)
+.\app\routers\audit.py:94:128: E501 line too long (137 > 127 characters)
+.\app\routers\audit.py:110:128: E501 line too long (155 > 127 characters)
+.\app\routers\audit.py:121:128: E501 line too long (158 > 127 characters)
+.\app\routers\auth.py:1:1: F401 'fastapi.Request' imported but unused
+.\app\routers\auth.py:114:128: E501 line too long (177 > 127 characters)
+.\app\routers\dashboard.py:3:1: F401 'sqlalchemy.text' imported but unused
+.\app\routers\dashboard.py:5:1: F401 'app.middleware.firebase_auth.get_current_user' imported but unused
+.\app\routers\dashboard.py:8:1: F401 'app.models.engagement.DisengagementSignal' imported but unused
+.\app\routers\dashboard.py:8:1: F401 'app.models.engagement.EngagementSurvey' imported but unused
+.\app\routers\dashboard.py:26:128: E501 line too long (168 > 127 characters)
+.\app\routers\dashboard.py:35:128: E501 line too long (238 > 127 characters)
+.\app\routers\dashboard.py:39:128: E501 line too long (132 > 127 characters)
+.\app\routers\dashboard.py:45:128: E501 line too long (152 > 127 characters)
+.\app\routers\dashboard.py:53:128: E501 line too long (240 > 127 characters)
+.\app\routers\dashboard.py:62:128: E501 line too long (206 > 127 characters)
+.\app\routers\dashboard.py:70:128: E501 line too long (218 > 127 characters)
+.\app\routers\dashboard.py:78:128: E501 line too long (205 > 127 characters)
+.\app\routers\dashboard.py:83:128: E501 line too long (163 > 127 characters)
+.\app\routers\dashboard.py:88:128: E501 line too long (159 > 127 characters)
+.\app\routers\dashboard.py:93:128: E501 line too long (208 > 127 characters)
+.\app\routers\dashboard.py:99:128: E501 line too long (173 > 127 characters)
+.\app\routers\dashboard.py:103:128: E501 line too long (201 > 127 characters)
+.\app\routers\dashboard.py:107:128: E501 line too long (166 > 127 characters)
+.\app\routers\dashboard.py:113:128: E501 line too long (142 > 127 characters)
+.\app\routers\dashboard.py:114:128: E501 line too long (157 > 127 characters)
+.\app\routers\dashboard.py:118:128: E501 line too long (164 > 127 characters)
+.\app\routers\dashboard.py:119:5: F811 redefinition of unused 'DisengagementSignal' from line 8
+.\app\routers\documents.py:4:1: F401 'sqlalchemy.func' imported but unused
+.\app\routers\documents.py:8:1: F401 'app.utils.minio_client.get_presigned_url' imported but unused
+.\app\routers\employees.py:3:1: F401 'sqlalchemy.update' imported but unused
+.\app\routers\employees.py:3:1: F401 'sqlalchemy.delete' imported but unused
+.\app\routers\employees.py:9:1: F401 'typing.List' imported but unused
+.\app\routers\employees.py:178:49: E741 ambiguous variable name 'l'
+.\app\routers\engagement.py:5:1: F401 'app.middleware.firebase_auth.get_current_user' imported but unused
+.\app\routers\engagement.py:6:1: F401 'app.models.engagement.RiskLevel' imported but unused
+.\app\routers\engagement.py:10:1: F401 'datetime.datetime' imported but unused
+.\app\routers\engagement.py:38:128: E501 line too long (133 > 127 characters)
+.\app\routers\engagement.py:44:128: E501 line too long (177 > 127 characters)
+.\app\routers\engagement.py:50:128: E501 line too long (133 > 127 characters)
+.\app\routers\engagement.py:59:128: E501 line too long (132 > 127 characters)
+.\app\routers\engagement.py:68:128: E501 line too long (153 > 127 characters)
+.\app\routers\engagement.py:83:128: E501 line too long (149 > 127 characters)
+.\app\routers\engagement.py:92:128: E501 line too long (191 > 127 characters)
+.\app\routers\engagement.py:98:128: E501 line too long (154 > 127 characters)
+.\app\routers\engagement.py:108:128: E501 line too long (144 > 127 characters)
+.\app\routers\engagement.py:117:128: E501 line too long (152 > 127 characters)
+.\app\routers\engagement.py:132:128: E501 line too long (204 > 127 characters)
+.\app\routers\engagement.py:151:128: E501 line too long (141 > 127 characters)
+.\app\routers\engagement.py:160:128: E501 line too long (138 > 127 characters)
+.\app\routers\engagement.py:166:128: E501 line too long (157 > 127 characters)
+.\app\routers\offboarding.py:3:1: F401 'sqlalchemy.func' imported but unused
+.\app\routers\offboarding.py:5:1: F401 'app.middleware.firebase_auth.get_current_user' imported but unused
+.\app\routers\offboarding.py:10:1: F401 'typing.List' imported but unused
+.\app\routers\offboarding.py:110:128: E501 line too long (151 > 127 characters)
+.\app\routers\onboarding.py:10:1: F401 'typing.List' imported but unused
+.\app\routers\onboarding.py:11:1: F401 'datetime.date' imported but unused
+.\app\routers\onboarding.py:164:128: E501 line too long (139 > 127 characters)
+.\app\routers\onboarding.py:194:128: E501 line too long (150 > 127 characters)
+.\app\routers\onboarding.py:194:142: E711 comparison to None should be 'if cond is not None:'
+.\app\routers\onboarding.py:197:128: E501 line too long (128 > 127 characters)
+.\app\routers\supervision.py:14:128: E501 line too long (218 > 127 characters)
+.\app\routers\supervision.py:28:128: E501 line too long (160 > 127 characters)
+.\app\routers\supervision.py:38:128: E501 line too long (136 > 127 characters)
+.\app\routers\supervision.py:43:128: E501 line too long (193 > 127 characters)
+.\app\routers\supervision.py:47:128: E501 line too long (197 > 127 characters)
+.\app\routers\supervision.py:57:128: E501 line too long (154 > 127 characters)
+.\app\routers\supervision.py:58:128: E501 line too long (164 > 127 characters)
+.\app\routers\supervision.py:63:128: E501 line too long (189 > 127 characters)
+.\app\routers\supervision.py:68:128: E501 line too long (154 > 127 characters)
+.\app\routers\users.py:50:128: E501 line too long (232 > 127 characters)
+.\app\routers\users.py:62:128: E501 line too long (132 > 127 characters)
+.\app\routers\users.py:67:128: E501 line too long (128 > 127 characters)
+.\app\routers\users.py:76:128: E501 line too long (152 > 127 characters)
+.\app\routers\users.py:89:128: E501 line too long (129 > 127 characters)
+.\app\utils\minio_client.py:2:1: F401 'minio.error.S3Error' imported but unused
+.\app\utils\pagination.py:2:1: F401 'typing.Optional' imported but unused
+.\tests\conftest.py:6:1: F401 'app.models' imported but unused
+.\tests\test_admin.py:1:1: F401 'pytest' imported but unused
+.\tests\test_assistant.py:1:1: F401 'pytest' imported but unused
+.\tests\test_auth.py:1:1: F401 'pytest' imported but unused
+.\tests\test_employees.py:61:9: F541 f-string is missing placeholders
+.\tests\test_security.py:1:1: F401 'pytest' imported but unused

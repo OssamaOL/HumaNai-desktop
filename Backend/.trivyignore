@@ -1,0 +1,6 @@
+# Ignore Starlette CVE-2025-62727 because FastAPI 0.115.x is locked to Starlette < 0.42.0
+CVE-2025-62727
+
+# Ignore OS-level alpine package vulnerabilities in official nginx:alpine image
+CVE-2026-45447
+CVE-2026-6732

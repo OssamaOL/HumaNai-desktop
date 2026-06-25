@@ -1,0 +1,47 @@
+{
+  "expectations": [
+    {
+      "id": "58b1950f-954f-4bb3-bc2f-06bf0ce8a783",
+      "kwargs": {
+        "column": "id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "ff7189aa-57f3-4f16-ab22-896eca9bdf95",
+      "kwargs": {
+        "column": "email"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "c14e2877-3f60-4444-907e-5afabdf44de5",
+      "kwargs": {
+        "column": "role",
+        "value_set": [
+          "collaborateur",
+          "manager",
+          "rh",
+          "direction",
+          "admin",
+          "qvt",
+          "superadmin",
+          "super_admin"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    }
+  ],
+  "id": "8813c4c1-a4de-4204-9d53-9ce248fa8d56",
+  "meta": {
+    "great_expectations_version": "1.18.1"
+  },
+  "name": "users_suite",
+  "notes": null
+}
