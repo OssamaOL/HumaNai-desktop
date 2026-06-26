@@ -11,6 +11,9 @@ import Assistant from './pages/Assistant'
 import Onboarding from './pages/Onboarding'
 import Analytics from './pages/Analytics'
 import Settings from './pages/Settings'
+import Engagement from './pages/Engagement'
+import Offboarding from './pages/Offboarding'
+import Supervision from './pages/Supervision'
 
 function MainApp() {
   const { user } = useAuth()
@@ -19,14 +22,17 @@ function MainApp() {
   if (!user) return <Login />
 
   function renderPage() {
-    if (activePage === 'dashboard') return <Dashboard onNavigate={setActivePage} />
-    if (activePage === 'employees') return <Employees />
-    if (activePage === 'absences') return <Absences />
-    if (activePage === 'documents') return <Documents />
-    if (activePage === 'assistant') return <Assistant />
+    if (activePage === 'dashboard')  return <Dashboard onNavigate={setActivePage} />
+    if (activePage === 'employees')  return <Employees />
+    if (activePage === 'absences')   return <Absences />
+    if (activePage === 'documents')  return <Documents />
+    if (activePage === 'assistant')  return <Assistant />
     if (activePage === 'onboarding') return <Onboarding />
-    if (activePage === 'analytics') return <Analytics />
-    if (activePage === 'settings') return <Settings />
+    if (activePage === 'analytics')  return <Analytics />
+    if (activePage === 'engagement') return <Engagement />
+    if (activePage === 'offboarding') return <Offboarding />
+    if (activePage === 'supervision') return <Supervision />
+    if (activePage === 'settings')   return <Settings />
     return <Dashboard onNavigate={setActivePage} />
   }
 

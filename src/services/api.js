@@ -113,6 +113,42 @@ export const adminAPI = {
   getSecurityEvents: () => request('GET', '/alerts/security/events'),
 }
 
+
+// ── Engagement ────────────────────────────────────────────────────────────────
+export const engagementAPI = {
+  surveys:  ()           => request('GET', '/engagement/surveys/'),
+  reviews:  ()           => request('GET', '/engagement/annual-reviews/'),
+  signals:  (risk_level) => {
+    const qs = risk_level ? `?risk_level=${risk_level}` : ''
+    return request('GET', `/engagement/disengagement/signals${qs}`)
+  },
+  scan:     ()           => request('POST', '/engagement/disengagement/scan', { full_scan: true }),
+}
+
+// ── Offboarding ───────────────────────────────────────────────────────────────
+export const offboardingAPI = {
+  list:      (params = {}) => {
+    const qs = new URLSearchParams(params).toString()
+    return request('GET', `/offboarding/${qs ? '?' + qs : ''}`)
+  },
+  initiate:  (employee_id, departure_reason, departure_date) =>
+    request('POST', '/offboarding/initiate', { employee_id, departure_reason, departure_date }),
+  get:       (id)  => request('GET',  `/offboarding/${id}`),
+  steps:     (id)  => request('GET',  `/offboarding/${id}/steps`),
+  checklist: (id)  => request('GET',  `/offboarding/${id}/checklist`),
+  complete:  (id)  => request('POST', `/offboarding/${id}/complete`),
+  transferDoc: (id) => request('POST', `/offboarding/${id}/transferdoc`),
+}
+
+// ── Supervision ───────────────────────────────────────────────────────────────
+export const supervisionAPI = {
+  interactions:        (page = 1) => request('GET', `/supervision/interactions?page=${page}`),
+  stats:               ()         => request('GET', '/supervision/interactions/stats'),
+  promptInjections:    ()         => request('GET', '/supervision/prompt-injections'),
+  unauthorizedAttempts:()         => request('GET', '/supervision/unauthorized-attempts'),
+  riskScore:           ()         => request('GET', '/supervision/risk-score'),
+}
+
 // ── System ────────────────────────────────────────────────────────────────────
 export const systemAPI = {
   health: () => fetch('http://localhost:8000/').then(r => r.json()),

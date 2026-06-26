@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { LayoutDashboard, Users, CalendarOff, FileText, MessageSquare, UserPlus, BarChart2, Settings, X, BookOpen, Zap, Shield, HelpCircle } from 'lucide-react'
+import { LayoutDashboard, Users, CalendarOff, FileText, MessageSquare, UserPlus, BarChart2, Settings, X, BookOpen, Zap, Shield, HelpCircle, Heart, LogOut, Eye } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 
 // ── Page access rules ─────────────────────────────────────────────────────────
@@ -15,6 +15,9 @@ const ALL_PAGES = [
   { icon: MessageSquare,   label: 'Assistant IA',    id: 'assistant',  roles: ['admin','rh','manager','collaborateur','direction','qvt'] },
   { icon: UserPlus,        label: 'Intégration',     id: 'onboarding', roles: ['admin','rh','manager'] },
   { icon: BarChart2,       label: 'Analytique',      id: 'analytics',  roles: ['admin','rh','direction'] },
+  { icon: Heart,           label: 'Engagement',      id: 'engagement', roles: ['admin','rh','manager','qvt'] },
+  { icon: LogOut,          label: 'Offboarding',     id: 'offboarding',roles: ['admin','rh'] },
+  { icon: Eye,             label: 'Supervision IA',  id: 'supervision',roles: ['admin'] },
   { icon: Settings,        label: 'Paramètres',      id: 'settings',   roles: ['admin','rh','manager','collaborateur','direction','qvt'] },
 ]
 
@@ -144,3 +147,4 @@ export default function Sidebar({ activePage, setActivePage }) {
     </>
   )
 }
+
