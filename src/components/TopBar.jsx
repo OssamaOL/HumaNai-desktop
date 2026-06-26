@@ -20,30 +20,59 @@ const SEVERITY_ICON = {
 }
 
 const QUICK_LINKS = [
-  { label: 'Tableau de bord',  page: 'dashboard' },
-  { label: 'Collaborateurs',  page: 'employees' },
-  { label: 'Absences',   page: 'absences'  },
-  { label: 'Documents',       page: 'documents' },
-  { label: 'Analytique',  page: 'analytics' },
-  { label: 'Intégration', page: 'onboarding'},
-  { label: 'Assistant IA', page: 'assistant'},
-  { label: 'Paramètres',   page: 'settings'  },
+  { label: 'Tableau de bord', page: 'dashboard'  },
+  { label: 'Collaborateurs',  page: 'employees'  },
+  { label: 'Absences',        page: 'absences'   },
+  { label: 'Documents',       page: 'documents'  },
+  { label: 'Analytique',      page: 'analytics'  },
+  { label: 'Intégration',     page: 'onboarding' },
+  { label: 'Assistant IA',    page: 'assistant'  },
+  { label: 'Engagement',      page: 'engagement' },
+  { label: 'Offboarding',     page: 'offboarding'},
+  { label: 'Supervision IA',  page: 'supervision'},
+  { label: 'Paramètres',      page: 'settings'   },
+]
+
+const HELP_ITEMS = [
+  {
+    title: 'Générer un document',
+    desc: 'Documents → « Générer un document » → choisissez un template et un collaborateur → cliquez Générer.',
+  },
+  {
+    title: 'Approuver une absence',
+    desc: 'Absences → les demandes « En attente » affichent Approuver / Refuser. Cliquez pour mettre à jour.',
+  },
+  {
+    title: 'Assistant IA',
+    desc: 'Posez vos questions directement en langage naturel : « Montre-moi les absences du mois », « Qui est en congé ? »',
+  },
+  {
+    title: 'Engagement & désengagement',
+    desc: 'Engagement → consultez les scores et signaux de désengagement de vos équipes.',
+  },
+  {
+    title: 'Offboarding',
+    desc: 'Offboarding → initiez un départ, suivez les étapes de conformité et générez la synthèse de transfert.',
+  },
+  {
+    title: 'Supervision IA (Admin)',
+    desc: 'Supervision IA → consultez les logs des interactions, tentatives d\'injection et score de risque global.',
+  },
 ]
 
 export default function TopBar({ onNavigate }) {
   const { user, logout } = useAuth()
   const badge = roleBadge[user?.role] || { color: '#44444B', bg: '#F2F2F4' }
 
-  const [search, setSearch]         = useState('')
-  const [showHelp, setShowHelp]     = useState(false)
-  const [showBell, setShowBell]     = useState(false)
-  const [alerts, setAlerts]         = useState([])
+  const [search, setSearch]             = useState('')
+  const [showHelp, setShowHelp]         = useState(false)
+  const [showBell, setShowBell]         = useState(false)
+  const [alerts, setAlerts]             = useState([])
   const [alertsLoaded, setAlertsLoaded] = useState(false)
 
   const bellRef = useRef(null)
   const helpRef = useRef(null)
 
-  // Close dropdowns on outside click
   useEffect(() => {
     function onMouseDown(e) {
       if (showBell && bellRef.current && !bellRef.current.contains(e.target)) setShowBell(false)
@@ -53,7 +82,6 @@ export default function TopBar({ onNavigate }) {
     return () => document.removeEventListener('mousedown', onMouseDown)
   }, [showBell, showHelp])
 
-  // Load alerts when bell is first opened
   async function handleBell() {
     setShowBell(v => !v)
     if (!alertsLoaded) {
@@ -62,20 +90,18 @@ export default function TopBar({ onNavigate }) {
     }
   }
 
-  // Search: filter quick links and navigate on Enter
   const searchResults = search.length > 0
     ? QUICK_LINKS.filter(l => l.label.toLowerCase().includes(search.toLowerCase()))
     : []
 
   function handleSearchKey(e) {
-    if (e.key === 'Enter' && searchResults.length > 0) {
-      onNavigate(searchResults[0].page); setSearch('')
-    }
+    if (e.key === 'Enter' && searchResults.length > 0) { onNavigate(searchResults[0].page); setSearch('') }
     if (e.key === 'Escape') setSearch('')
   }
 
   const iconBtn = (active) => ({
-    width: 36, height: 36, borderRadius: 10, border: active ? '1px solid #E2E2E6' : 'none',
+    width: 36, height: 36, borderRadius: 10,
+    border: active ? '1px solid #E2E2E6' : 'none',
     background: active ? '#F7F7F9' : 'transparent',
     cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#71717a',
   })
@@ -86,15 +112,15 @@ export default function TopBar({ onNavigate }) {
       {/* Search */}
       <div style={{ position: 'relative', width: 280 }}>
         <Search size={14} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: '#9A9AA2', pointerEvents: 'none' }} />
-        <input
-          value={search} onChange={e => setSearch(e.target.value)} onKeyDown={handleSearchKey}
+        <input value={search} onChange={e => setSearch(e.target.value)} onKeyDown={handleSearchKey}
           placeholder="Rechercher une page…"
           style={{ width: '100%', padding: '9px 16px 9px 36px', background: '#F7F7F9', border: '1px solid #E2E2E6', borderRadius: 10, fontSize: 13.5, color: '#1A1A1E', outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box' }}
         />
         {searchResults.length > 0 && (
           <div style={{ position: 'absolute', top: 'calc(100% + 6px)', left: 0, width: '100%', background: '#FFFFFF', border: '1px solid #E2E2E6', borderRadius: 10, boxShadow: '0 8px 24px rgba(0,0,0,0.08)', overflow: 'hidden', zIndex: 200 }}>
             {searchResults.map(r => (
-              <button key={r.page} onClick={() => { onNavigate(r.page); setSearch('') }} style={{ width: '100%', padding: '10px 14px', background: 'none', border: 'none', textAlign: 'left', fontSize: 13.5, color: '#1A1A1E', cursor: 'pointer', borderBottom: '1px solid #F2F2F4', fontFamily: 'inherit' }}
+              <button key={r.page} onClick={() => { onNavigate(r.page); setSearch('') }}
+                style={{ width: '100%', padding: '10px 14px', background: 'none', border: 'none', textAlign: 'left', fontSize: 13.5, color: '#1A1A1E', cursor: 'pointer', borderBottom: '1px solid #F2F2F4', fontFamily: 'inherit' }}
                 onMouseEnter={e => e.currentTarget.style.background = '#F7F7F9'}
                 onMouseLeave={e => e.currentTarget.style.background = 'none'}
               >{r.label}</button>
@@ -105,7 +131,6 @@ export default function TopBar({ onNavigate }) {
 
       <div style={{ flex: 1 }} />
 
-      {/* Icon buttons */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
 
         {/* Calendar → Absences */}
@@ -115,22 +140,17 @@ export default function TopBar({ onNavigate }) {
 
         {/* Help */}
         <div ref={helpRef} style={{ position: 'relative' }}>
-          <button onClick={() => setShowHelp(v => !v)} title="Help" style={iconBtn(showHelp)}>
+          <button onClick={() => setShowHelp(v => !v)} title="Aide" style={iconBtn(showHelp)}>
             <HelpCircle size={18} strokeWidth={1.8} />
           </button>
           {showHelp && (
-            <div style={{ position: 'absolute', top: 'calc(100% + 10px)', right: 0, width: 260, background: '#FFFFFF', border: '1px solid #E2E2E6', borderRadius: 14, boxShadow: '0 12px 32px rgba(0,0,0,0.1)', padding: '16px', zIndex: 200 }}>
+            <div style={{ position: 'absolute', top: 'calc(100% + 10px)', right: 0, width: 300, background: '#FFFFFF', border: '1px solid #E2E2E6', borderRadius: 14, boxShadow: '0 12px 32px rgba(0,0,0,0.1)', padding: '16px', zIndex: 200 }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-                <span style={{ fontSize: 13, fontWeight: 700, color: '#1A1A1E' }}>Quick Help</span>
+                <span style={{ fontSize: 13, fontWeight: 700, color: '#1A1A1E' }}>Aide rapide</span>
                 <button onClick={() => setShowHelp(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#9A9AA2' }}><X size={14} /></button>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                {[
-                  { title: 'Générer un document', desc: 'Allez dans Documents → Générer un document, choisissez un template et un collaborateur.' },
-                  { title: 'Approuver des absences', desc: 'Allez dans Absences et cliquez sur Approuver ou Refuser les demandes en attente.' },
-                  { title: 'Assistant IA', desc: 'Discutez avec l\'IA dans la page Assistant — elle lit vos documents RH.' },
-                  { title: 'Analytique & KPIs', desc: 'Allez dans Analytique → cliquez sur Calculer les KPIs pour rafraîchir vos métriques.' },
-                ].map(({ title, desc }) => (
+                {HELP_ITEMS.map(({ title, desc }) => (
                   <div key={title} style={{ padding: '10px 12px', background: '#F7F7F9', borderRadius: 10 }}>
                     <div style={{ fontSize: 12.5, fontWeight: 600, color: '#1A1A1E', marginBottom: 3 }}>{title}</div>
                     <div style={{ fontSize: 11.5, color: '#71717a', lineHeight: 1.5 }}>{desc}</div>
@@ -144,7 +164,7 @@ export default function TopBar({ onNavigate }) {
 
         {/* Bell */}
         <div ref={bellRef} style={{ position: 'relative' }}>
-          <button onClick={handleBell} title="Alerts" style={iconBtn(showBell)}>
+          <button onClick={handleBell} title="Alertes" style={iconBtn(showBell)}>
             <Bell size={18} strokeWidth={1.8} />
             {alertsLoaded && alerts.length > 0 && (
               <span style={{ position: 'absolute', top: 6, right: 6, width: 8, height: 8, borderRadius: '50%', background: '#DC2626', border: '2px solid #FFFFFF' }} />
@@ -153,13 +173,13 @@ export default function TopBar({ onNavigate }) {
           {showBell && (
             <div style={{ position: 'absolute', top: 'calc(100% + 10px)', right: 0, width: 320, background: '#FFFFFF', border: '1px solid #E2E2E6', borderRadius: 14, boxShadow: '0 12px 32px rgba(0,0,0,0.1)', zIndex: 200, overflow: 'hidden' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', borderBottom: '1px solid #E2E2E6' }}>
-                <span style={{ fontSize: 13, fontWeight: 700, color: '#1A1A1E' }}>Alerts {alerts.length > 0 && `(${alerts.length})`}</span>
+                <span style={{ fontSize: 13, fontWeight: 700, color: '#1A1A1E' }}>Alertes {alerts.length > 0 && `(${alerts.length})`}</span>
                 <button onClick={() => setShowBell(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#9A9AA2' }}><X size={14} /></button>
               </div>
               <div style={{ maxHeight: 300, overflowY: 'auto' }}>
                 {alerts.length === 0 ? (
                   <div style={{ padding: '24px', textAlign: 'center', color: '#9A9AA2', fontSize: 13 }}>
-                    <CheckCircle size={24} style={{ marginBottom: 8, color: '#059669' }} /><br />No active alerts
+                    <CheckCircle size={24} style={{ marginBottom: 8, color: '#059669' }} /><br />Aucune alerte active
                   </div>
                 ) : (
                   alerts.slice(0, 8).map((a, i) => {
@@ -169,7 +189,7 @@ export default function TopBar({ onNavigate }) {
                         <sev.Icon size={15} style={{ color: sev.color, flexShrink: 0, marginTop: 1 }} />
                         <div>
                           <div style={{ fontSize: 12.5, fontWeight: 600, color: '#1A1A1E' }}>{a.alert_type?.replace(/_/g, ' ')}</div>
-                          <div style={{ fontSize: 11.5, color: '#71717a' }}>{a.triggered_at ? new Date(a.triggered_at).toLocaleDateString() : ''}</div>
+                          <div style={{ fontSize: 11.5, color: '#71717a' }}>{a.triggered_at ? new Date(a.triggered_at).toLocaleDateString('fr-FR') : ''}</div>
                         </div>
                       </div>
                     )
@@ -177,8 +197,9 @@ export default function TopBar({ onNavigate }) {
                 )}
               </div>
               {alerts.length > 0 && (
-                <button onClick={() => { onNavigate('analytics'); setShowBell(false) }} style={{ width: '100%', padding: '12px', background: '#F7F7F9', border: 'none', fontSize: 12.5, color: '#4F46E5', fontWeight: 600, cursor: 'pointer', borderTop: '1px solid #E2E2E6', fontFamily: 'inherit' }}>
-                  View all in Analytics →
+                <button onClick={() => { onNavigate('analytics'); setShowBell(false) }}
+                  style={{ width: '100%', padding: '12px', background: '#F7F7F9', border: 'none', fontSize: 12.5, color: '#4F46E5', fontWeight: 600, cursor: 'pointer', borderTop: '1px solid #E2E2E6', fontFamily: 'inherit' }}>
+                  Voir tout dans Analytique →
                 </button>
               )}
             </div>
